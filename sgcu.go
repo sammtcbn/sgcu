@@ -8,6 +8,14 @@ import (
     "math"
 )
 
+func ShowArg () {
+    var argc int = len (os.Args)
+    fmt.Println ("argc is ", argc)
+    for i:=0 ; i<argc ; i++ {
+        fmt.Printf ("argv[%d] is %s\n", i, os.Args[i])
+    }
+}
+
 func IndexAt (content string, sep string, startaddr int) int {
     idx := strings.Index (content[startaddr:], sep)
     if idx > -1 {
@@ -29,7 +37,7 @@ func FloatToString (input_num float64, decimal_place int) string {
     if (input_num == 0) {
         return "0"
     }
-    return strconv.FormatFloat(input_num, 'f', decimal_place, 64)
+    return strconv.FormatFloat (input_num, 'f', decimal_place, 64)
 }
 
 func FloatToIntStr (input_num float64) string {
