@@ -5,6 +5,7 @@ import (
     "strings"
     "strconv"
     "os"
+    "math"
 )
 
 func IndexAt (content string, sep string, startaddr int) int {
@@ -22,4 +23,11 @@ func StringToFloat (str string) float64 {
         os.Exit (2)
     }
     return floatvalue
+}
+
+func FloatToIntStr (input_num float64) string {
+    var str string
+    var v float64 = math.Trunc (input_num)
+    str = strconv.FormatFloat (v, 'f', 0, 64)
+    return str
 }
