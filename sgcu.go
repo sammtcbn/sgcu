@@ -4,7 +4,7 @@ import (
     "strings"
 )
 
-func indexAt (content string, sep string, startaddr int) int {
+func IndexAt (content string, sep string, startaddr int) int {
     idx := strings.Index(content[startaddr:], sep)
     if idx > -1 {
         idx += startaddr
