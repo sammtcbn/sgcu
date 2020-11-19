@@ -38,3 +38,40 @@ func FloatToIntStr (input_num float64) string {
     str = strconv.FormatFloat (v, 'f', 0, 64)
     return str
 }
+
+func FloatStringShrink (instr string) string {
+    var dotaddr int = -1
+    var outstr string = instr
+    var outstrLen int = len (outstr)
+    var outstrLen2 int = -1
+    var endaddr int = outstrLen
+
+    dotaddr = strings.Index (outstr, ".")
+
+    if (dotaddr == -1) {
+        return outstr
+    }
+
+    // ex: 10.
+    if (dotaddr == (outstrLen - 1)) {
+        return outstr[0:outstrLen-1]
+    }
+
+    for i:=outstrLen-1; i>dotaddr; i-- {
+        //fmt.Println(i, string(outstr[i]))
+        if (outstr[i] == '0') {
+            endaddr = i
+        } else {
+            break
+        }
+    }
+
+    // ex: 10.00 -> 10.
+    outstrLen2 = len (outstr[0:endaddr])
+
+    if (dotaddr == (outstrLen2 - 1)) {
+        endaddr = dotaddr
+    }
+
+    return outstr[0:endaddr]
+}
