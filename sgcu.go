@@ -83,3 +83,23 @@ func FloatStringShrink (instr string) string {
 
     return outstr[0:endaddr]
 }
+
+func FloatStringBeautySymbol (instr string) string {
+    var retstr string
+    var v float64
+
+    if strings.Compare(instr, "0") == 0 {
+        retstr = "+0"
+        return retstr
+    }
+
+    v = StringToFloat (instr)
+    //fmt.Println (v)
+
+    if (v > 0) {
+        retstr = "+" + instr
+        return retstr
+    }
+
+    return instr
+}
