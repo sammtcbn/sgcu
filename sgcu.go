@@ -6,6 +6,7 @@ import (
     "strconv"
     "os"
     "math"
+    "time"
 )
 
 func ShowArg () {
@@ -102,4 +103,18 @@ func FloatStringBeautySymbol (instr string) string {
     }
 
     return instr
+}
+
+func UTCSecToDateStr(seconds int64) string {
+	t := time.Unix(seconds, 0).UTC()
+	return t.Format("2006-01-02")
+}
+
+func UTCSecToDateStr_Taipei(seconds int64) string {
+    loc, err := time.LoadLocation("Asia/Taipei")
+	if err != nil {
+		loc = time.UTC
+	}
+	t := time.Unix(seconds, 0).In(loc)
+	return t.Format("2006-01-02")
 }
